@@ -1,8 +1,8 @@
 # router6-demo
 
 ## 资料
-- [redux-saga](https://redux-saga-in-chinese.js.org/)
-- [redux-saga-github](https://github.com/redux-saga/redux-saga)
+- [router6](https://reactrouter.com/en/main)
+- [router6-github](https://github.com/remix-run/react-router)
 
 ## 项目
 ```bash
