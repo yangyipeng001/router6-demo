@@ -11,6 +11,12 @@ export default function createRoutesFromChildren(children) {
             path: child.props.path
         }
 
+        // 如果有子路由
+        if (child.props.children) {
+            // route array
+            route.children = createRoutesFromChildren(child.props.children)
+        }
+
         routes.push(route)
     })
 
