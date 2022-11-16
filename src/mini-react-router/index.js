@@ -3,6 +3,7 @@ import Routes from './Routes'
 import Route from './Route'
 import Link from './Link'
 import Outlet from './Outlet'
+import Navigate from './Navigate'
 // import {useNavigate, useParams} from './hooks'
 
 export * from './hooks'
@@ -13,6 +14,7 @@ export {
     Route,
     Link,
     Outlet,
+    Navigate,
     // useNavigate,
     // useParams,
 }

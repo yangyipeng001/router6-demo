@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useCallback, useContext } from "react"
 import { matchRoutes } from "react-router-dom"
 import { NavigationContext, RouteContext } from "./Context"
 import Outlet from "./Outlet"
@@ -58,9 +58,29 @@ function renderMatches(matches) {
 
 export function useNavigate() {
     // 跳转
+
+    // * 第一版
+    // const {navigator} = useContext(NavigationContext)
+    // return navigator.push
+
+    // * 第二版
     const {navigator} = useContext(NavigationContext)
 
-    return navigator.push
+    const navigate = useCallback((to, options = {}) => {
+        // 支持类似于history.go
+        if (typeof to === 'number') {
+            navigator.go(to)
+            return
+        }
+
+        (
+            !!options.replace 
+                ? navigator.replace
+                : navigator.push
+        )(to, options.state)
+    }, [navigator])
+
+    return navigate
 };
 
 export function useLocation() {
