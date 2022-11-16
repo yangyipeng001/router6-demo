@@ -1,5 +1,5 @@
-import { useCallback, useContext } from "react"
-import { matchRoutes } from "react-router-dom"
+import { useCallback, useContext, useMemo } from "react"
+import { matchPath, matchRoutes } from "react-router-dom"
 import { NavigationContext, RouteContext } from "./Context"
 import Outlet from "./Outlet"
 import { normallizePathname } from "./utils"
@@ -101,4 +101,21 @@ export function useParams() {
     const routeMatch = matches[matches.length - 1]
     
     return routeMatch ? routeMatch.params : {}
+}
+
+
+export function useMatch(pattern) {
+    const {pathname} = useLocation()
+
+    return useMemo(() => matchPath(pattern, pathname), [pathname, pattern])
+}
+
+export function useResolvedPath(to) {
+    const {pathname} = useLocation()
+
+    return useMemo(() => ({
+        pathname: to,
+        hash: '',
+        search: '',
+    }), [pathname])
 }

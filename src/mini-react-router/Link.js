@@ -1,6 +1,6 @@
 import { useNavigate } from "./hooks"
 
-export default function Link({to, children}) {
+export default function Link({to, children, ...rest}) {
     const navigate = useNavigate()
 
     const handle = (e) => {
@@ -9,6 +9,6 @@ export default function Link({to, children}) {
     }
     
     return (
-        <a href={to} onClick={handle}>{children}</a>
+        <a href={to} onClick={handle} {...rest}>{children}</a>
     )
 };
